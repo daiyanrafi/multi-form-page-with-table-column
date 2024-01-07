@@ -1,6 +1,7 @@
 // FinalizeSubmissionForm.tsx
 import React from 'react';
 import { Typography, Grid, TextField, Select, MenuItem, Input, FormControlLabel, Checkbox, Button } from '@mui/material';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 type FinalizeSubmissionFormProps = {
   final_sub_bestTime: string;
@@ -86,7 +87,7 @@ export function FinalizeSubmissionForm({
           </Typography>
         </Grid>
         <Grid item xs={12} style={{ fontFamily: 'Arial, sans-serif', fontSize: '14px', fontStyle: 'italic', marginBottom: '16px' }}>
-          <FormControlLabel
+          {/* <FormControlLabel
             control={
               <Checkbox
                 required
@@ -95,7 +96,14 @@ export function FinalizeSubmissionForm({
               />
             }
             label="I am not a robot"
-          />
+          /> */}
+          <ReCAPTCHA
+          sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+          onChange={(value: any) => {
+            // Handle reCAPTCHA verification success, you can use the value if needed
+            console.log('reCAPTCHA value:', value);
+          }}
+        />
         </Grid>
       </Grid>
     </div>
